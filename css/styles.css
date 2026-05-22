@@ -95,6 +95,7 @@ body {
   align-items: center;
   gap: 0.4rem;
   transform-origin: top left;
+  overflow: hidden;
 }
 
 .sidebar {
