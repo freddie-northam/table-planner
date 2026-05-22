@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table Planner</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Left: Tables -->
+<div class="tables-area">
+  <div class="warning-banner" id="warning">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+    <span id="warningText"></span>
+  </div>
+  <div class="tables-boundary">
+    <div class="tables-grid" id="tablesGrid"></div>
+    <div class="zero-state" id="zeroState">
+      <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+        <ellipse cx="100" cy="105" rx="55" ry="55" stroke-width="1.5" fill="rgba(255,255,255,0.03)"/>
+        <circle cx="100" cy="55" r="10" stroke-dasharray="3 2" opacity="0.5"/>
+        <circle cx="145" cy="80" r="10" stroke-dasharray="3 2" opacity="0.5"/>
+        <circle cx="145" cy="130" r="10" stroke-dasharray="3 2" opacity="0.5"/>
+        <circle cx="100" cy="155" r="10" stroke-dasharray="3 2" opacity="0.5"/>
+        <circle cx="55" cy="130" r="10" stroke-dasharray="3 2" opacity="0.5"/>
+        <circle cx="55" cy="80" r="10" stroke-dasharray="3 2" opacity="0.5"/>
+        <path d="M90 18 a12 12 0 0 1 20 0" stroke-width="1.5" opacity="0.4"/>
+        <path d="M165 63 a12 12 0 0 1 10 17" stroke-width="1.5" opacity="0.4"/>
+        <path d="M175 137 a12 12 0 0 1 -10 17" stroke-width="1.5" opacity="0.4"/>
+        <path d="M110 182 a12 12 0 0 1 -20 0" stroke-width="1.5" opacity="0.4"/>
+        <path d="M35 137 a12 12 0 0 1 -10 -17" stroke-width="1.5" opacity="0.4"/>
+        <path d="M25 63 a12 12 0 0 1 10 -17" stroke-width="1.5" opacity="0.4"/>
+        <path d="M30 30 l3-8 3 8 M33 25 l-8 3 8 3" opacity="0.3" stroke-width="1"/>
+        <path d="M170 25 l2-6 2 6 M172 21 l-6 2 6 2" opacity="0.25" stroke-width="1"/>
+        <path d="M165 175 l2-6 2 6 M167 171 l-6 2 6 2" opacity="0.2" stroke-width="1"/>
+      </svg>
+      <p>Your party is just waiting to be planned...</p>
+    </div>
+  </div>
+</div>
+
+<!-- Right: Sidebar -->
+<div class="sidebar">
+  <div class="glass panel settings-panel" style="flex-shrink:0;">
+    <h2>Settings</h2>
+    <div class="setting-row">
+      <label>Tables</label>
+      <input type="number" class="num-input" id="tableCount" min="1" max="50" value="2">
+    </div>
+    <div class="setting-row">
+      <label>Shape</label>
+      <div class="shape-toggle">
+        <button class="shape-btn active" data-shape="round" title="Round">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>
+        </button>
+        <button class="shape-btn" data-shape="rectangle" title="Rectangle">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/></svg>
+        </button>
+      </div>
+    </div>
+    <div>
+      <h2>Seats per table</h2>
+      <div class="table-sizes" id="tableSizes"></div>
+    </div>
+    <button class="btn-shuffle" id="shuffleBtn" disabled>
+      <svg class="icon" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+      Shuffle
+    </button>
+  </div>
+
+  <div class="glass panel guest-list-panel">
+    <div class="panel-header">
+      <h2>Guest List</h2>
+      <button class="btn-clear" id="clearAll" title="Clear all guests">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+      </button>
+    </div>
+    <form class="add-form" id="addForm">
+      <input type="text" id="nameInput" placeholder="Guest name" autocomplete="off">
+      <button type="button" class="gender-toggle" id="genderToggle" title="Click to toggle M/F">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="10" cy="14" r="7"/><path d="M21 3l-5.2 5.2M21 3h-5M21 3v5"/></svg>
+      </button>
+      <button type="submit" class="btn-icon" title="Add guest">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </form>
+    <div class="guest-list-scroll" id="guestListScroll">
+      <div class="guest-list-viewport" id="guestListViewport">
+        <div id="guestList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Note: If modules fail to load from file://, serve with: npx serve . -->
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
