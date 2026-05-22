@@ -120,9 +120,11 @@ export function render(shuffled = false) {
       ? renderRoundTable(i, tables[i].seats, padded)
       : renderRectTable(i, tables[i].seats, padded);
 
-    html += `<div class="table-visual-wrapper ${shuffled ? 'shuffled' : ''}" style="width:${wrapW}px;height:${wrapH}px;transform:scale(${scale.toFixed(3)});">
-      <span class="table-label">Table ${i + 1}</span>
-      ${tHtml}
+    html += `<div class="table-visual-wrapper ${shuffled ? 'shuffled' : ''}" style="width:${wrapW}px;height:${wrapH}px;">
+      <div style="transform:scale(${scale.toFixed(3)});transform-origin:top left;">
+        <span class="table-label">Table ${i + 1}</span>
+        ${tHtml}
+      </div>
     </div>`;
   }
   gridEl.innerHTML = html;

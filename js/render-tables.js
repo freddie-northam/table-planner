@@ -37,8 +37,8 @@ export function getTableBaseDims(seats, shape) {
   } else {
     const { hasEnds, topC } = rectLayout(seats);
     const slotW = SEAT_W + SEAT_GAP;
-    const sideMargin = hasEnds ? SEAT_W + SEAT_GAP * 2 : SEAT_GAP * 2;
-    const totalW = topC * slotW + sideMargin;
+    const sideMargin = hasEnds ? SEAT_W / 2 + SEAT_GAP * 2 : SEAT_GAP;
+    const totalW = topC * slotW + sideMargin * 2;
     const totalH = SEAT_H + 16 + SEAT_H * 1.2 + 16 + SEAT_H;
     return { w: totalW, h: totalH };
   }
